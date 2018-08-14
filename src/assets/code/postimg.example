@@ -1,0 +1,49 @@
+  render() {
+    const post = this.props.data.nodePost;
+    const formattedDate = formatDate(post.created);
+    return (
+      <ContentGrid>
+        <ContentGridMain>
+          <PostWrapper>
+            <Helmet>
+              <title>{post.title} | Brian Perry</title>
+            </Helmet>
+            <h1>{post.title}</h1>
+            <h3>— {formattedDate}</h3>
+            {
+              post.relationships.image
+                ? <PostImage sizes={post.relationships.image.localFile.childImageSharp.sizes}/>
+                : null
+            }
+            <div dangerouslySetInnerHTML={{__html: post.body.value}}/>
+          </PostWrapper>
+        </ContentGridMain>
+      </ContentGrid>
+    );
+  }
+}
+
+export default Post;
+
+export const query = graphql`
+  query PostQuery($slug: String!) {
+    nodePost(fields: { slug: { eq: $slug } }) {
+      title
+      body {
+        value
+      }
+      relationships {
+        image {
+          localFile {
+            childImageSharp {
+              sizes(maxWidth: 1250) {
+                ...GatsbyImageSharpSizes
+              }
+            }
+          }
+        }
+      }
+      created
+    }
+  }
+`;
