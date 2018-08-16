@@ -35,6 +35,9 @@ const images = {
   hs2: require('./assets/hs2.png'),
   bpiPost: require('./assets/bpi_post.png'),
   wysiwyg: require('./assets/post_wysiwyg.png'),
+  staticImg: require('./assets/static_image.png'),
+  flexibleImg: require('./assets/flexible_image.png'),
+  gatsbySourceDrupal: require('./assets/gatsby-source-drupal.png'),
 };
 
 const theme = createTheme(
@@ -66,6 +69,9 @@ const BigList = styled(List)`
     margin-left: 4rem;
     color: white;
     background-color: #03A9FC;
+  }
+  a {
+    color: #03A9FC;
   }
 `;
 
@@ -120,7 +126,7 @@ export default class Presentation extends React.Component {
           bgColor="secondary"
           notes=""
         >
-          <Heading fit textColor="primary">Dealing with the Limatations of</Heading>
+          <Heading fit textColor="primary">Understanding the Limatations of</Heading>
           <Heading fit>gatsby-source-drupal</Heading>
           <Link href="http://bit.ly/hot-jams" target="_blank"><S type="underline"><Text textSize="50px" margin="3rem 0 0 0">http://bit.ly/tbd</Text></S></Link>
         </Slide>
@@ -179,6 +185,12 @@ export default class Presentation extends React.Component {
         </Slide>
 
         <Slide
+          notes=""
+        >
+          <Image src={images.gatsbySourceDrupal} height="90vh" />
+        </Slide>
+
+        <Slide
           notes="I've been building the least important site on the internet using
           gatsby and drupal since the beginning of the year. Almost all of the data
           comes from a Drupal contenta instance and I'm using the gatsby-source-drupal
@@ -193,18 +205,19 @@ export default class Presentation extends React.Component {
         <Slide
           notes=""
         >
-          <MarginHeading>Who Else Is Using gatsby-source-drupal?</MarginHeading>
+          <MarginHeading>Who Else is Using gatsby-source-drupal?</MarginHeading>
         </Slide>
 
         <Slide
-          notes="Mario Hernandez, Mike Herchel. Should Drupal commerce be here?"
+          notes="Mario Hernandez, Mike Herchel. Should Drupal commerce be here?
+          Note about tutorials being really basic and kind of stopping when things get difficult"
         >
           <MarginHeading>Drupal Community</MarginHeading>
           <BigList>
-            <ListItem>Drupal community personal sites - mostly markdown</ListItem>
-            <ListItem>Decoupled Days - Gatsby only first, gatsby-source-drupal for sesison content</ListItem>
+            <ListItem>Personal sites - mostly markdown</ListItem>
+            <ListItem>Decoupled Days - gatsby-source-drupal for sesison content</ListItem>
             <ListItem>Tutorials, Contenta Reference Implementation</ListItem>
-            <ListItem>Anecdotally, lots of projects. Few specific examples.</ListItem>
+            <ListItem>Anecdotally, lots of projects. Few specific examples</ListItem>
           </BigList>
           <MarginHeading size={3} textColor="secondary">Expected to see more...</MarginHeading>
         </Slide>
@@ -228,12 +241,12 @@ export default class Presentation extends React.Component {
           notes=""
         >
           <MarginHeading>Why Not More gatsby-source-drupal?</MarginHeading>
-          <MarginHeading size={2}>A Few Theories:</MarginHeading>
+          <MarginHeading size={2}>Theories:</MarginHeading>
           <BigList>
-            <ListItem>Folks are starting with file/markdown source from tutorials and facing resistance moving to Drupal.</ListItem>
-            <ListItem>Drupal may actually be overkill for some of these builds</ListItem>
-            <ListItem>Growing comfort with Gatsby and more complex builds may balance this out</ListItem>
-            <ListItem>In the meantime, we can work to make using Gatsby and Drupal easier</ListItem>
+            <ListItem>Starting with file/markdown then facing resistance moving to Drupal</ListItem>
+            <ListItem>For some builds, Drupal may be overkill</ListItem>
+            <ListItem>Growing comfort with Gatsby and more complex builds will balance this out</ListItem>
+            <ListItem>We can work to make using Gatsby and Drupal easier</ListItem>
           </BigList>
         </Slide>
 
@@ -244,7 +257,7 @@ export default class Presentation extends React.Component {
           <MarginHeading size={2}>Image Handling</MarginHeading>
           <BigList>
             <ListItem>Found gatsby-remark-images first, but markdown only</ListItem>
-            <ListItem>Used gatsby-image, gatsby-transformer-sharp, gatsby-plugin-sharp istead</ListItem>
+            <ListItem>Used gatsby-image instead</ListItem>
             <ListItem>Getting the query right took trial and error</ListItem>
           </BigList>
         </Slide>
@@ -257,12 +270,19 @@ export default class Presentation extends React.Component {
           code={require("raw-loader!./assets/code/postimg.example")}
           ranges={[
             { loc: [27, 36], title: "src/templates/post.js", note: "The image file reference from Drupal." },
-            { loc: [34, 45], title: "src/templates/post.js", note: "The fragment for the gatsby processed image" },
+            { loc: [34, 45], title: "src/templates/post.js", note: "The fragment for the gatsby processed image. Sizes object used for fluid images (called fluid in v2)" },
             { loc: [0, 23], title: "src/templates/post.js", note: "Rendering the image" },
             { loc: [10, 18], title: "src/templates/post.js", note: "<PostImage /> is styled gatsby <Img /> component" },
           ]}
           notes=""
         />
+
+        <Slide
+          notes=""
+        >
+          <CustomText>Cool! But only one image explicitly placed in template</CustomText>
+          <Image src={images.staticImg} height="80vh" />
+        </Slide>
 
         <Slide
           notes="Fair counterpoint if this is a reasonable expectation of a decoupled build
@@ -273,7 +293,6 @@ export default class Presentation extends React.Component {
           <MarginHeading>Example Roadblock:</MarginHeading>
           <MarginHeading size={2}>Flexible Image Placement</MarginHeading>
           <BigList>
-            <ListItem>Previous example only single image explicitly placed in template</ListItem>
             <ListItem>gatsby-remark-images can handle images placed anywhere in markdown</ListItem>
             <ListItem>Could we achieve this with gatsby-source-drupal?</ListItem>
           </BigList>
@@ -282,8 +301,8 @@ export default class Presentation extends React.Component {
         <Slide
           notes=""
         >
-          <MarginHeading>In Drupal</MarginHeading>
-          <MarginHeading size={2}>Placeholder Element in Body</MarginHeading>
+          <MarginHeading>My (Hacky) Workaround</MarginHeading>
+          <MarginHeading size={2}>Placeholder Element in Drupal Body</MarginHeading>
           <Image src={images.wysiwyg} />
         </Slide>
 
@@ -305,10 +324,21 @@ export default class Presentation extends React.Component {
         <Slide
           notes=""
         >
-          <MarginHeading size={2}>Flexible Image Placement</MarginHeading>
+          <Image src={images.flexibleImg} height="60vh" />
           <BigList>
-            <ListItem>It works, but not a viable long term solution.</ListItem>
-            <ListItem>Real need: supporting image handling plugin that functions like gatsby-remark-images, but for Drupal.</ListItem>
+            <ListItem>Works, but doesn't feel like a long term solution</ListItem>
+            <ListItem>Real need: supporting image handling plugin that functions like gatsby-remark-images, but for Drupal</ListItem>
+          </BigList>
+        </Slide>
+
+        <Slide
+          notes="Does this have any overlap with upcoming Gatsby Preview?"
+        >
+          <MarginHeading>Automating Deployment</MarginHeading>
+          <MarginHeading size={2}>(Not really Gatsby specific)</MarginHeading>
+          <BigList>
+            <ListItem>I update Drupal, and then nothing happens.</ListItem>
+            <ListItem>Let's automate! Netlify Webhooks module.</ListItem>
           </BigList>
         </Slide>
 
@@ -325,22 +355,11 @@ export default class Presentation extends React.Component {
         <Slide
           notes=""
         >
-          <MarginHeading>Automating Deployment</MarginHeading>
-          <MarginHeading size={2}>Not really Gatsby specific</MarginHeading>
-          <BigList>
-            <ListItem>Currently have to manually trigger builds when Drupal content changes.</ListItem>
-            <ListItem>Let's automate this!</ListItem>
-          </BigList>
-        </Slide>
-
-        <Slide
-          notes=""
-        >
           <MarginHeading>Why I'm Sticking with gatsby-source-drupal</MarginHeading>
           <BigList>
-            <ListItem>I <i class="em em-sparkling_heart"></i> Drupal. </ListItem>
-            <ListItem>Like not having to port markdown/image files (50 posts)</ListItem>
-            <ListItem>Makes it easier to switch or use multiple front ends.</ListItem>
+            <ListItem>I <i class="em em-sparkling_heart"></i> Drupal </ListItem>
+            <ListItem>Like not having to port markdown/image files (50+ posts)</ListItem>
+            <ListItem>Makes it easier to switch front ends</ListItem>
             <ListItem>Want to contribute to making Gatsby and Drupal better <i class="em em-stars"></i></ListItem>
           </BigList>
         </Slide>
