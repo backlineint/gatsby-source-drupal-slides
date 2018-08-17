@@ -38,6 +38,7 @@ const images = {
   staticImg: require('./assets/static_image.png'),
   flexibleImg: require('./assets/flexible_image.png'),
   gatsbySourceDrupal: require('./assets/gatsby-source-drupal.png'),
+  netlifyWebhooks: require('./assets/netlify_webhooks.png'),
 };
 
 const theme = createTheme(
@@ -214,9 +215,11 @@ export default class Presentation extends React.Component {
         >
           <MarginHeading>Drupal Community</MarginHeading>
           <BigList>
+            <ListItem>Tutorials - few go deep</ListItem>
+            <ListItem>Reference Implementations: Gatsby, Contenta</ListItem>
             <ListItem>Personal sites - mostly markdown</ListItem>
             <ListItem>Decoupled Days - gatsby-source-drupal for sesison content</ListItem>
-            <ListItem>Tutorials, Contenta Reference Implementation</ListItem>
+            <ListItem>outrider.org - pre gatsby-source-drupal?</ListItem>
             <ListItem>Anecdotally, lots of projects. Few specific examples</ListItem>
           </BigList>
           <MarginHeading size={3} textColor="secondary">Expected to see more...</MarginHeading>
@@ -338,8 +341,15 @@ export default class Presentation extends React.Component {
           <MarginHeading size={2}>(Not really Gatsby specific)</MarginHeading>
           <BigList>
             <ListItem>I update Drupal, and then nothing happens.</ListItem>
-            <ListItem>Let's automate! Netlify Webhooks module.</ListItem>
+            <ListItem>Let's automate!</ListItem>
           </BigList>
+        </Slide>
+
+        <Slide
+          notes=""
+        >
+          <MarginHeading>Netlify Webhooks Module</MarginHeading>
+          <Image src={images.netlifyWebhooks} height="80vh" />
         </Slide>
 
         <Slide
