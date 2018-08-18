@@ -129,7 +129,7 @@ export default class Presentation extends React.Component {
         >
           <Heading fit textColor="primary">Understanding the Limatations of</Heading>
           <Heading fit>gatsby-source-drupal</Heading>
-          <Link href="http://bit.ly/hot-jams" target="_blank"><S type="underline"><Text textSize="50px" margin="3rem 0 0 0">http://bit.ly/tbd</Text></S></Link>
+          <Link href="http://bit.ly/gatsby-drupal" target="_blank"><S type="underline"><Text textSize="50px" margin="3rem 0 0 0">http://bit.ly/gatsby-drupal</Text></S></Link>
         </Slide>
 
         <Slide
@@ -218,11 +218,19 @@ export default class Presentation extends React.Component {
             <ListItem>Tutorials - few go deep</ListItem>
             <ListItem>Reference Implementations: Gatsby, Contenta</ListItem>
             <ListItem>Personal sites - mostly markdown</ListItem>
-            <ListItem>Decoupled Days - gatsby-source-drupal for sesison content</ListItem>
-            <ListItem>outrider.org - pre gatsby-source-drupal?</ListItem>
             <ListItem>Anecdotally, lots of projects. Few specific examples</ListItem>
           </BigList>
-          <MarginHeading size={3} textColor="secondary">Expected to see more...</MarginHeading>
+        </Slide>
+
+        <Slide
+          notes=""
+        >
+          <MarginHeading>At Decoupled Drupal Days</MarginHeading>
+          <BigList>
+            <ListItem>Drupal Commerce Prototype</ListItem>
+            <ListItem>outrider.org - not using gatsby-source-drupal</ListItem>
+            <ListItem>Decoupled Days - drupal for sesison content</ListItem>
+          </BigList>
         </Slide>
 
         <Slide
@@ -329,7 +337,7 @@ export default class Presentation extends React.Component {
         >
           <Image src={images.flexibleImg} height="60vh" />
           <BigList>
-            <ListItem>Works, but doesn't feel like a long term solution</ListItem>
+            <ListItem>Works, but not a long term solution</ListItem>
             <ListItem>Real need: supporting image handling plugin that functions like gatsby-remark-images, but for Drupal</ListItem>
           </BigList>
         </Slide>
@@ -357,8 +365,8 @@ export default class Presentation extends React.Component {
         >
           <MarginHeading>Other Issues</MarginHeading>
           <BigList>
-            <ListItem>Gatsby <Link href="https://github.com/gatsbyjs/gatsby/pull/5020" target="_blank">PR #5020</Link> - fix to support multiple entity references (v2 only atm) </ListItem>
-            <ListItem>Gatsby <Link href="https://github.com/gatsbyjs/gatsby/issues/7075" target="_blank">Issue 7075</Link> - 405 response / contact module causes gatsby-source-drupal to fail. (Open PR)</ListItem>
+            <ListItem>Gatsby <Link href="https://github.com/gatsbyjs/gatsby/pull/5020" target="_blank">PR #5020</Link> - fix to support multiple entity references (fixed in v2!) </ListItem>
+            <ListItem>Gatsby <Link href="https://github.com/gatsbyjs/gatsby/issues/7075" target="_blank">Issue 7075</Link> - 405 response / contact module causes gatsby-source-drupal to fail. (fixed in v2!)</ListItem>
           </BigList>
         </Slide>
 
